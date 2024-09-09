@@ -1,0 +1,6 @@
+@use '../../abstracts';
+
+.color-group{
+    padding: abstracts.$padding;
+    border: 1px solid black;
+}

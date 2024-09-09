@@ -1,0 +1,15 @@
+@use '../abstracts';
+
+.layout{
+    display: flex;
+    flex-direction: row;
+    width: 100svw;
+    height: 100svh;
+    border: 1px solid red;
+}
+
+@media only screen and (max-width: abstracts.$layout-breakpoint-small) {
+    .layout {
+      flex-direction: column;
+    }
+  }

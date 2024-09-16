@@ -1,6 +1,61 @@
 @use '../../abstracts';
 
+$color-picker-width: 25px;
+
 .color-group{
-    padding: abstracts.$padding;
-    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    & form{
+        background-color: abstracts.$background-color-div;
+        border-radius: abstracts.$border-radius;
+    }
+}
+
+.color-input-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    column-gap: 5px;
+    padding: abstracts.$padding-big;
+    & div{
+        position: relative;
+        width: auto;
+        margin-left:auto;
+        margin-right: 10px;
+    }
+    & span{
+        transform: scale(0.80);
+        &:hover{
+            cursor: default;
+        }
+    }
+    & label{
+        display: block;
+        height: 15px;
+        line-height: 10px;
+        font-size: 0.90rem;
+    }
+    & input[type=color]{
+        position: absolute;
+        height: 100%;
+        width: $color-picker-width;
+        padding: 0;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+    & input[type=text]{
+        width: 55px;
+        padding: 3px 2px 3px 0;
+        padding-left: $color-picker-width + 3px;
+    }
+}
+
+.active-color{
+    background-color: rgba(126, 126, 126, 0.25);
+}
+
+@media only screen and (max-width: abstracts.$layout-breakpoint-small) {
+
 }

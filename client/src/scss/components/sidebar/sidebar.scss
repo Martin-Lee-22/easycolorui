@@ -1,14 +1,29 @@
-@use '../../abstracts';
+@use "../../abstracts";
 
-.sidebar{
-    width: 275px;
-    height: 100%;
-    border: 1px solid green;
+.sidebar {
+  width: 275px;
+  height: 100%;
+  background-color: #040e1d;
+  color: white;
+  & h3, h4 {
+    margin-top: 0;
+    display: inline-block;
+  }
+  & h3 {
+    margin-right: 8px;
+  }
+  & hr {
+    border: 0.5px solid grey;
+    opacity: 40%;
+  }
+  & label {
+    color: rgb(224, 224, 224);
+  }
+  & section{
+    padding: abstracts.$padding-big;
+  }
 }
 
 @media only screen and (max-width: abstracts.$layout-breakpoint-small) {
-    .sidebar {
-      width: 100%;
-      height: 125px;
-    }
-  }
+
+}

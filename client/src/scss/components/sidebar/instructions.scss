@@ -1,0 +1,14 @@
+.instructions-section{
+    & div{
+        display: flex;
+        flex-direction: row;
+        column-gap: 15px;
+        align-items: center;
+    }
+    & h4{
+        margin: 0;
+    }
+    & div > span{
+        font-size: 3rem;
+    }
+}

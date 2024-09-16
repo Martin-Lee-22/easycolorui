@@ -4,13 +4,15 @@ import { color } from "../types/colors"
 type colorsContext = {
     colors: color[],
     setColors: React.Dispatch<React.SetStateAction<color[]>>
-    color: React.MutableRefObject<color | undefined>
+    activeColor: color | undefined,
+    setActiveColor: React.Dispatch<React.SetStateAction<color|undefined>>
 }
 
 const colorsContextState = {
     colors: [],
     setColors: () => {},
-    color: {current:undefined}
+    activeColor: undefined,
+    setActiveColor: ()=>{}
 }
 
 const ColorsContext = createContext<colorsContext>(colorsContextState)

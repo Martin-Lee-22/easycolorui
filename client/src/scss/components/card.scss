@@ -1,0 +1,13 @@
+@use '../abstracts';
+
+#card{
+    padding: abstracts.$padding-big;
+    display: flex;
+    flex-direction: column;
+}
+
+#price-card{
+    @extend #card;
+    border: 1px solid black;
+    & ul{list-style:none;}
+}

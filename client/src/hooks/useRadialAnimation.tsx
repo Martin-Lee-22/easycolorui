@@ -11,9 +11,10 @@ const useRadialAnimation = () => {
 
     const progress = useRef(0)
     const delay = 1
+    const maxRadiusSize = 100
 
     useEffect(()=>{
-        if(animate && radius < 100){
+        if(animate && radius < maxRadiusSize){
             var timeoutId = setTimeout(()=>{
                 progress.current += 0.020
                 let easeValue = easeInSine(progress.current) * 100

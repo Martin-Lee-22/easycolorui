@@ -11,7 +11,6 @@ import { defaultColors } from './data/default'
 function App() {
   const [colors, setColors] = useState<color[]>(defaultColors)
   const [activeColor, setActiveColor] = useState<color | undefined>()
-
   return (
     <Layout>
       <ColorsContext.Provider value={{colors, setColors, activeColor, setActiveColor}}>

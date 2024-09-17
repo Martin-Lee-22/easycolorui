@@ -1,13 +1,138 @@
 @use '../abstracts';
 
-#card{
-    padding: abstracts.$padding-big;
+.card{
+    background-color: white;
+    min-width: 150px;
+}
+
+.card-with-outer-border{
+    @extend .card;
+    padding: abstracts.$padding-small;
+    & div:nth-child(1){
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: abstracts.$padding-bigger;
+        border:1px solid black;
+    }
+}
+
+.card-without-outer-border{
+    @extend .card;
+    padding: abstracts.$padding-bigger;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #price-card{
-    @extend #card;
+    @extend .card-with-outer-border;
+    & ul{
+        list-style:none;
+        padding: 0;
+        & span{
+            margin-right: 10px;
+        }
+    }
+    & hr{
+        width: 90%;
+        height: 2px;
+        border-style: none;
+        background-color: black;
+    }
+    & h3{
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    & button{
+        margin-top: 20px;
+        width: auto;
+       
+    }
+}
+
+#benefits-card{
+    @extend .card-without-outer-border;
+    width: 300px;
     border: 1px solid black;
-    & ul{list-style:none;}
+    border-radius: abstracts.$border-radius;
+    & hr{
+        width: 90%;
+        height: 2px;
+        border-style: none;
+        background-color: black;
+    }
+    & h2{
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+    & span{
+        font-size: 30pt;
+    }
+}
+
+#ai-profile{
+    @extend .card-without-outer-border;
+    border-radius: abstracts.$border-radius;
+    align-items: start;
+    row-gap: 8px;
+    border: 1px solid black;
+    & img:nth-of-type(1){
+        border-radius: abstracts.$border-radius;
+        border: 1px solid black;
+    }
+    & div:nth-of-type(1){
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        column-gap: 2px;
+        background: transparent;
+        font-size: 1.2rem;
+        & span:last-child{
+            margin-left: 4px;
+            font-size: 0.80rem;
+        }
+    }
+    & div:nth-of-type(2){
+        background: transparent;
+        display: flex;
+        flex-direction: row;
+        column-gap: 8px;
+        & img{
+            border-radius: 50%;
+            width: 28px;
+        }
+        & span{
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+    }
+    & div:nth-of-type(3){
+        background: transparent;
+        width: 250px;
+        margin-top: 2px;
+        & p{
+            margin: 0;
+        }
+    }
+    & div:nth-of-type(4){
+        background: transparent;
+        display: flex;
+        flex-direction: row;
+        column-gap: 2px;
+        align-items: center;
+        margin-top: 10px;
+        margin-bottom: 5px;
+        & span:nth-of-type(2){
+            margin-left: 8px;
+        }
+        & h6{
+            margin: 0;
+        }
+    }
+    & button{
+        width: 100%;
+    }
 }

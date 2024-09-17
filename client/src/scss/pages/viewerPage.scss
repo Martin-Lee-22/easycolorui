@@ -2,6 +2,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    overflow: scroll;
     column-gap: 20px;
     height: 100%;
     width: 100%;
@@ -9,4 +12,7 @@
     opacity: 0.8;
     background-image: radial-gradient(#8d8d8d 1.1500000000000001px, #e4e3e3 1.1500000000000001px);
     background-size: 23px 23px;
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }

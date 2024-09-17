@@ -1,39 +1,43 @@
-import ColorUX from "../colorUX"
-import '../../scss/components/card.scss'
+import ColorUX from "../colorUX";
+import "../../scss/components/card.scss";
+import ColorUXFactory from "../colorUXFactory";
+import { priceCardDataType } from "../../data/components";
 
-const PriceCard = () => {
-    return(
+const PriceCard = ({data}:{data:priceCardDataType}) => {
+  return (
+    <ColorUX>
+      <div id={`price-card`}>
         <ColorUX>
-            <div id={`price-card`}>
-            <ColorUX>
-                <h2>
-                    Basic
-                </h2>
-            </ColorUX>
-            <ColorUX>
-                <h1>
-                    Free
-                </h1>
-            </ColorUX>
-            <ColorUX>
-                <ul>
-                <ColorUX>
-                    <li>cofee</li>
-                </ColorUX>
-                <ColorUX>
-                    <li>milk</li>
-                    </ColorUX>
-                    <ColorUX>
-                    <li>tea</li>
-                    </ColorUX>
-                </ul>
-            </ColorUX>
-            <ColorUX>
-            <button><ColorUX><p>Buy Template</p></ColorUX></button>
-            </ColorUX>
+            <div>
+                <ColorUXFactory>
+                    <h3>{data.type}</h3>
+                    <h1>{data.price}</h1>
+                    <hr/>
+                    <ul>
+                    <ColorUXFactory>
+                        {data.list.map((data, index)=>{
+                            return(
+                                <li key={index}>
+                                    <ColorUX>
+                                    <span>&#x2713;</span>
+                                    </ColorUX>
+                                    {data}
+                                </li>
+                            )
+                        })}
+                    </ColorUXFactory>
+                    </ul>
+                    <button>
+                        <ColorUX>
+                        <span>{data.buttonText}</span>
+                        </ColorUX>
+                    </button>
+                </ColorUXFactory>
             </div>
         </ColorUX>
-    )
-}
+      </div>
+    </ColorUX>
+  );
+};
 
-export default PriceCard
+export default PriceCard;

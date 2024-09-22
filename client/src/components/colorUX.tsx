@@ -27,7 +27,7 @@ const ColorUX = ({children}: {children: JSX.Element}) => {
     }
 
     const colorUXProps = {
-        className:  (textElements.includes(children.type) ?  'text-ui' : ''), // Check to see if child element is a text element.
+        className: children.props.className + (textElements.includes(children.type) ?  ' text-ui' : ''), // Check to see if child element is a text element.
         ref: element,
         onClick: (e:React.MouseEvent<HTMLElement, MouseEvent>)=> handleClick(e),
         style: {backgroundImage: createRadialGradient(colorHistory)}

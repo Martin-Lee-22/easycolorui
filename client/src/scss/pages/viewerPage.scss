@@ -1,3 +1,5 @@
+@use '../abstracts';
+
 .viewer-page{
     display: flex;
     justify-content: center;
@@ -6,13 +8,18 @@
     row-gap: 20px;
     overflow: scroll;
     column-gap: 20px;
-    height: 100%;
-    width: 100%;
     background-color: #ffffff;
     opacity: 0.8;
     background-image: radial-gradient(#8d8d8d 1.1500000000000001px, #e4e3e3 1.1500000000000001px);
     background-size: 23px 23px;
+    padding: 2.5%;
+    width: 100vw;
     &::-webkit-scrollbar {
         display: none;
+    }
+    & h1, h2, h3 ,h4, h5, h6,p{
+        &:hover{
+            cursor: default;
+        }
     }
 }

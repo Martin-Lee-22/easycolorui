@@ -13,42 +13,44 @@ const AiProfiles = ({data}: {data:aiProfilesDataType}) => {
         }
         return stars
     }
+    
     return(
         <ColorUX>
-            <div id="ai-profile">
-                <img src="https://picsum.photos/250/200" alt="random ai"/>
-                <div>
+            <div className="ai-profile">
+                <img src={data.aiImgSrc} alt="random ai"/>
+                <div className={`ai-profile-${data.userName}-div`}>
                     <ColorUXFactory>
-                        {stars.map((_, index)=> {return <span key={index}>&#9733;</span>})}
+                        {stars.map((_, index)=> {return <span key={index} className={`ai-profile-${data.userName}-star-${index}`}>&#9733;</span>})}
                     </ColorUXFactory>
                     <ColorUX>
-                        <span>Rated {data.stars} Stars</span>
+                        <span className={`ai-profile-${data.userName}-number-stars`}>Rated {data.stars} Stars</span>
                     </ColorUX>
                 </div>
-                <div>
+                <div className={`ai-profile-${data.userName}-div-2`}>
                     <ColorUXFactory>
-                        <img src='../../../public/user.png' alt="user"/>
-                        <span>{data.userName}</span>
+                        <img src={data.imgSrc} alt="user"/>
+                        <span className={`ai-profile-${data.userName}-user-name`}>{data.userName}</span>
                     </ColorUXFactory>
                 </div>
-                <div>
+                <div className={`ai-profile-${data.userName}-div-3`}>
                     <ColorUX>
-                        <p>{data.description}</p>
+                        <p className={`ai-profile-${data.userName}-description`}>{data.description}</p>
                     </ColorUX>
                 </div>
-                <div>
+                <div className={`ai-profile-${data.userName}-div-4`}>
                     <ColorUXFactory>
-                    <span>&#9200;</span>
-                    <h6>{data.duration.hours}h {data.duration.minutes}min</h6>
-                    <span>&#128214;</span>
-                    <h6>{data.lessons} Lessons</h6>
+                    <span className={`ai-profile-${data.userName}-clock`}>&#9200;</span>
+                    <h6 className={`ai-profile-${data.userName}-time`}>{data.duration.hours}h {data.duration.minutes}min</h6>
+                    <span className={`ai-profile-${data.userName}-book`}>&#128214;</span>
+                    <h6 className={`ai-profile-number-${data.userName}-lessons`}>{data.lessons} Lessons</h6>
                     </ColorUXFactory>
                 </div>
                 <ColorUX>
-                    <button>
-                        <ColorUX>
-                            <span>View Course</span>
-                        </ColorUX>
+                    <button className={`ai-profile-${data.userName}-button`}>
+                        <ColorUXFactory>
+                            <span className={`ai-profile-${data.userName}-button-text`}>View Course</span>
+                            <span className={`ai-profile-${data.userName}-arrow`}>&#x279D;</span>
+                        </ColorUXFactory>
                     </button>
                 </ColorUX>
             </div>

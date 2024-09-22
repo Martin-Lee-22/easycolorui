@@ -12,7 +12,7 @@ const ColorGroup = () => {
         setColors(colors.map((color)=>{
             return color.type === c.type ? {...color, color: value} : color
         }))
-        setActiveColor({color:value, type:c.type, description:c.description})
+        setActiveColor({id:c.id, color:value, type:c.type, description:c.description, classes:c.classes})
     }
 
     return(

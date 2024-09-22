@@ -1,0 +1,31 @@
+@use '../abstracts';
+
+.contact-form-container{
+    background-color: white;
+    border: 1px solid black;
+    border-radius: abstracts.$border-radius;
+    padding: 25px;
+    max-width: 375px;
+    & h2{
+        margin: 0;
+    }
+    & form{
+        display: flex;
+        flex-direction: column;
+    }
+    & label{
+        font-weight: 500;
+    }
+    & input[type='text']{
+        margin-bottom: 20px;
+        margin-top: 5px;
+        height: 25px;
+    }
+    & textarea{
+        height: 5rem;
+    }
+    & input[type='button']{
+        padding: abstracts.$padding-big;
+        margin-top: 10px;      
+    }
+}

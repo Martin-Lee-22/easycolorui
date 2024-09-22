@@ -1,0 +1,18 @@
+@use '../abstracts';
+.web-page{
+    width: 80%;
+    & section{
+        background-color: white;
+        & button{
+            &:hover{
+                cursor: pointer;
+            }
+            & span:hover{
+                cursor: pointer;
+            }
+        }
+    }
+    & section:nth-child(even){
+        background-color: rgb(242, 242, 242);
+    }
+}

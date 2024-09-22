@@ -6,30 +6,30 @@ import { priceCardDataType } from "../../data/components";
 const PriceCard = ({data}:{data:priceCardDataType}) => {
   return (
     <ColorUX>
-      <div id={`price-card`}>
+      <div className={`price-card`}>
         <ColorUX>
-            <div>
+            <div className={`price-card-${data.type}-div`}>
                 <ColorUXFactory>
-                    <h3>{data.type}</h3>
-                    <h1>{data.price}</h1>
-                    <hr/>
-                    <ul>
+                    <h3 className={`price-card-${data.type}-h3`}>{data.type}</h3>
+                    <h1 className={`price-card-${data.type}-h1`}>{data.price}</h1>
+                    <hr className={`price-card-${data.type}-hr`}/>
+                    <ul className={`price-card-${data.type}-ul`}>
                     <ColorUXFactory>
-                        {data.list.map((data, index)=>{
+                        {data.list.map((d, index)=>{
                             return(
-                                <li key={index}>
+                                <li key={index} className={`price-card-${data.type}-li-${index}`}>
                                     <ColorUX>
-                                    <span>&#x2713;</span>
+                                    <span  className={`price-card-${data.type}-span-${index}`}>&#x2713;</span>
                                     </ColorUX>
-                                    {data}
+                                    {d}
                                 </li>
                             )
                         })}
                     </ColorUXFactory>
                     </ul>
-                    <button>
+                    <button className={`price-card-button`}>
                         <ColorUX>
-                        <span>{data.buttonText}</span>
+                        <span className={`price-card-button-span`}>{data.buttonText}</span>
                         </ColorUX>
                     </button>
                 </ColorUXFactory>

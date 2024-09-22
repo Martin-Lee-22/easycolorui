@@ -1,10 +1,13 @@
 @use "../../abstracts";
 
 .sidebar {
-  width: 275px;
+  position: default;
+  max-width: 275px;
   height: 100%;
   background-color: #040e1d;
   color: white;
+  transition: 0.5s;
+  z-index: 2;
   & h3, h4 {
     margin-top: 0;
     display: inline-block;
@@ -24,6 +27,19 @@
   }
 }
 
-@media only screen and (max-width: abstracts.$layout-breakpoint-small) {
+.show{
+  right: 0px;
+  display: block;
+}
 
+.hide{
+  right: -275px;
+  display: none;
+}
+
+@media only screen and (max-width: abstracts.$layout-breakpoint-medium) {
+  .sidebar {
+    position: absolute;
+    width: 60%;
+  }
 }

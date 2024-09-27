@@ -9,7 +9,7 @@ const Introduction = () => {
                 <ColorUXFactory>
                     <div className='introduction-div'>
                         <ColorUXFactory>
-                            <h1 className='introduction-h1'>EasyColorUI</h1>
+                            <h1 className='introduction-h1'>EasyColorUX</h1>
                             <p className='introduction-p'>Transforms your artistic ideas into vibrant masterpieces with just a few clicks, making coloring effortless and fun for everyone!</p>
                             <button className='introduction-button'>
                                 <ColorUX>

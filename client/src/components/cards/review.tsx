@@ -2,6 +2,8 @@ import { reviewDataType } from "../../data/components"
 import ColorUX from "../colorUX"
 import ColorUXFactory from "../colorUXFactory"
 import '../../scss/components/card.scss'
+import {motion} from 'framer-motion'
+import { popUpAnimation } from "../../data/animation";
 
 const Review = ({data}:{data:reviewDataType}) => {
     const stars = createStars(data.stars)
@@ -16,7 +18,7 @@ const Review = ({data}:{data:reviewDataType}) => {
 
     return(
         <ColorUX>
-            <div className="review">
+            <motion.div className="review" variants={popUpAnimation}>
                 <ColorUXFactory>
                 <div className={`review-${data.userName}-div`}>
                     <ColorUXFactory>
@@ -32,7 +34,7 @@ const Review = ({data}:{data:reviewDataType}) => {
                 </div>
                 <p className={`review-${data.userName}-p`}>{data.review}</p>
                 </ColorUXFactory>
-            </div>
+            </motion.div>
         </ColorUX>
     )
 }

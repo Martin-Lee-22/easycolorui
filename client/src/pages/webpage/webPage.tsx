@@ -7,10 +7,12 @@ import Introduction from './sections/introduction'
 import Plans from './sections/plans'
 import Questions from './sections/questions'
 import Reviews from './sections/reviews'
+import { motion } from 'framer-motion'
+import { popUpAnimation } from '../../data/animation'
 
 const WebPage = () => {
     return(
-        <div className="web-page">
+        <motion.div className="web-page" variants={popUpAnimation}>
             <Introduction/>
             <About/>
             <Reviews/>
@@ -19,7 +21,7 @@ const WebPage = () => {
             <Questions/>
             <Contact/>
             <Footer/>
-        </div>
+        </motion.div>
     )
 }
 

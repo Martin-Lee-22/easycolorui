@@ -2,6 +2,8 @@ import ColorUX from "../colorUX"
 import ColorUXFactory from "../colorUXFactory"
 import '../../scss/components/card.scss'
 import { aiProfilesDataType } from "../../data/components"
+import {motion} from 'framer-motion'
+import { popUpAnimation } from "../../data/animation";
 
 const AiProfiles = ({data}: {data:aiProfilesDataType}) => {
     const stars = createStars(data.stars)
@@ -16,7 +18,7 @@ const AiProfiles = ({data}: {data:aiProfilesDataType}) => {
     
     return(
         <ColorUX>
-            <div className="ai-profile">
+            <motion.div className="ai-profile" variants={popUpAnimation}>
                 <img src={data.aiImgSrc} alt="random ai"/>
                 <div className={`ai-profile-${data.userName}-div`}>
                     <ColorUXFactory>
@@ -53,7 +55,7 @@ const AiProfiles = ({data}: {data:aiProfilesDataType}) => {
                         </ColorUXFactory>
                     </button>
                 </ColorUX>
-            </div>
+            </motion.div>
         </ColorUX>
     )
 }

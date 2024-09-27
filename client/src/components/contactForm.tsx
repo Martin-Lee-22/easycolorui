@@ -1,11 +1,13 @@
 import ColorUX from "./colorUX"
 import '../scss/components/contactForm.scss'
 import ColorUXFactory from "./colorUXFactory"
+import {motion} from 'framer-motion'
+import { popUpAnimation } from "../data/animation";
 
 const ContactForm = () => {
     return(
         <ColorUX>
-            <div className="contact-form-container">
+            <motion.div className="contact-form-container" variants={popUpAnimation}>
                 <ColorUXFactory>
                     <h2 className="contact-form-h2">Message Us!</h2>
                     <p className="contact-form-p">Feel free to fill up the form and our team will get back to you within 24 hours.</p>
@@ -21,7 +23,7 @@ const ContactForm = () => {
                         </ColorUXFactory>
                     </form>
                 </ColorUXFactory>
-            </div>
+            </motion.div>
         </ColorUX>
     )
 }

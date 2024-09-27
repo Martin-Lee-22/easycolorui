@@ -21,12 +21,12 @@ const PopularPalettes = () => {
 
     return(
         <section>
-            <h3>Popular Palettes:</h3>
+            {/* <h3>Popular Palettes:</h3>
             <div className="popular-palettes-wrapper">
                 {colors.map((color, index) => {
                     return <div key={index} className="popular-palette" style={{backgroundImage: createGradient(colors, 'right')}}/>
                 })}
-            </div>
+            </div> */}
         </section>
     )
 }

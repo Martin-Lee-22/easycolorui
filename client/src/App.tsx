@@ -8,6 +8,7 @@ import { color } from './types/colors'
 import ColorsContext from './context/colorsContextProvider'
 import { defaultColors } from './data/default'
 import { useMediaQuery } from 'react-responsive'
+import { runDriver } from './util/driver'
 
 function App() {
   const [colors, setColors] = useState<color[]>(defaultColors)
@@ -16,15 +17,18 @@ function App() {
   const [showSideBar, setShowSideBar] = useState<boolean>(true)
 
   useEffect(()=>{
-    if(isMobile) setShowSideBar(false)
+    let timeoutID = setTimeout(()=>{
+      runDriver()
+    }, 1500)
+    return ()=> clearTimeout(timeoutID)
   },[isMobile])
-  
+
   return (
     <Layout>
       <ColorsContext.Provider value={{colors, setColors, activeColor, setActiveColor}}>
         <ViewerPage/>
         <Sidebar showSideBar={showSideBar} setShowSideBar={setShowSideBar} isMobile={isMobile}/>
-        <img src='../public/hamburger.png' alt='hamburger' className={'hamburger ' + (!isMobile && 'hide')} onClick={() => setShowSideBar(!showSideBar)}/>
+        <img src='/hamburger.png' alt='hamburger' className={'hamburger ' + (!isMobile && 'hide')} onClick={() => setShowSideBar(!showSideBar)}/>
       </ColorsContext.Provider>
     </Layout>
   )

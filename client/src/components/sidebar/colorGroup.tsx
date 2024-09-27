@@ -18,7 +18,7 @@ const ColorGroup = () => {
     return(
         <section className="color-group">
             <div>
-            <h3>Step 1:</h3><h4>Pick Colors</h4>
+                <h3>Step 1:</h3><h4>Pick Colors</h4>
             </div>
             <form>
                 {colors.map((color, index)=>{
@@ -27,6 +27,10 @@ const ColorGroup = () => {
                             </div>)
                 })}
             </form>
+            <div className='add-subtract-color-wrapper'>
+                <button title='Add Color' className='add-color' onClick={()=>{setColors([...colors, {id:colors.length, color: '#FFFFFF', description: 'Extra color for your palette', type: `extra #${colors.length - 2}`, classes:[]}])}}><span>&#x2b;</span></button>
+                {colors.length > 3 && <button title='Subtract Color' className='subtract-color' onClick={()=>{setColors([...colors.slice(0, -1)])}}><span>&#x2212;</span></button>}
+            </div>
         </section>
     )
 }

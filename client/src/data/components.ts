@@ -1,5 +1,3 @@
-import { link } from "framer-motion/client"
-
 // Price Card
 type priceCardDataType = {
     type:string,
@@ -30,7 +28,7 @@ const priceCardData = [
         list:['Everything in Standard Plan',
             'Advanced Security',
             'Custom Contact',
-            'User Provisioning (SCIM)',
+            'User Provisioning',
             'SAML SSO'],
         buttonText: 'Choose Standard'
     }
@@ -85,10 +83,10 @@ type aiProfilesDataType = {
 const aiProfilesData = [
     {
         stars: 5,
-        aiImgSrc: 'https://picsum.photos/250/200',
-        imgSrc: '../../../public/user_1.png',
-        userName: 'Jhon Smith',
-        description: "My course provides personalized feedback and real-world applications to ensure you master key AI concepts. By the end of my course, you'll be equipped with the knowledge and skills to confidently build and deploy your own AI solutions.",
+        aiImgSrc: '/ai-img.png',
+        imgSrc: '/user_1.png',
+        userName: 'Johnny Smith',
+        description: "My course provides personalized feedback and real-world applications to ensure you master key design concepts. By the end of my course, you'll be equipped with the knowledge and skills to confidently build your own designs.",
         duration: {
             hours: 20,
             minutes: 10
@@ -97,8 +95,8 @@ const aiProfilesData = [
     },
     {
         stars: 3,
-        aiImgSrc: 'https://picsum.photos/250/200',
-        imgSrc:'../../../public/user_2.png',
+        aiImgSrc: '/ai-img.png',
+        imgSrc:'/user_2.png',
         userName: 'June Summers',
         description: "I will deliver practical, hands-on training with the latest industry tools and techniques, making complex concepts accessible and actionable. You'll receive personalized support from me and work on real-world projects to solidify your skills.",
         duration: {
@@ -109,10 +107,10 @@ const aiProfilesData = [
     },
     {
         stars: 4,
-        aiImgSrc: 'https://picsum.photos/250/200',
-        imgSrc:'../../../public/user_4.png',
+        aiImgSrc: '/ai-img.png',
+        imgSrc:'/user_4.png',
         userName: 'Mark Anthony',
-        description: "Guided by me! You'll build practical skills through real-world projects, equipping you to develop and implement innovative AI solutions confidently.",
+        description: "Guided by me! You'll build practical skills through real-world projects, equipping you to develop and implement innovative designs confidently.",
         duration: {
             hours: 18,
             minutes: 20
@@ -122,7 +120,7 @@ const aiProfilesData = [
 ]
 
 // Accordion
-const accordionData = ['How does Easy-AI work?', 'Which payment methods are accepted?', 'What is your refund policy?', 'How do I become an instructor?', 'How is your AI different than others?']
+const accordionData = ['How does EasyColorUX work?', 'Which payment methods are accepted?', 'What is your refund policy?', 'How do I become an instructor?', 'How is your UX techniques different than others?']
 
 // Review
 
@@ -135,27 +133,27 @@ type reviewDataType = {
 
 const reviewData = [
     {
-        imgSrc: '../../../public/user_3.png',
+        imgSrc: '/user_3.png',
         userName: 'Michelle Stone',
         stars: 5,
-        review: 'I’m absolutely blown away by how intuitive and powerful this web app AI is! It seamlessly integrates into my workflow, providing spot-on insights and recommendations that have significantly boosted my productivity. The user interface is sleek and user-friendly, making it a joy to use every day.'
+        review: 'I’m absolutely blown away by how intuitive and powerful this web app is! It seamlessly integrates into my workflow, providing spot-on insights and recommendations that have significantly boosted my productivity. The user interface is sleek and user-friendly, making it a joy to use every day.'
     },
     {
-        imgSrc: '../../../public/user_6.png',
+        imgSrc: '/user_6.png',
         userName: 'Rick Sanchez',
         stars: 5,
-        review: 'This web app AI has transformed my daily tasks with its incredible accuracy and efficiency. Its intuitive design and smart features make it an indispensable tool that I can’t imagine working without.'
+        review: 'This web app has transformed my daily tasks with its incredible accuracy and efficiency. Its intuitive design and smart features make it an indispensable tool that I can’t imagine working without.'
     },
     {
-        imgSrc: '../../../public/user_5.png',
+        imgSrc: '/user_5.png',
         userName: 'Daniel Owen',
         stars: 5,
-        review: "I’m thoroughly impressed with this web app AI—it's revolutionized the way I work! Its ability to provide precise insights and automate repetitive tasks has saved me hours each week. The interface is incredibly intuitive, making it easy to integrate into my existing workflow. Overall, it’s a game-changer that has exceeded all my expectations."
+        review: "I’m thoroughly impressed with this web app! The interface is incredibly intuitive, making it easy to integrate into my existing workflow. Overall, it’s a game-changer that has exceeded all my expectations."
     }
 ]
 
 // Footer
- const footerData = [
+const footerData = [
     {
         heading: 'Resources',
         links: ['Docs', 'Blog', 'Support']
@@ -168,7 +166,7 @@ const reviewData = [
         heading: 'Follow us',
         links: ['Facebook', 'Twitter', 'Instagram']
     }
- ]
+]
 
 export {priceCardData, benefitsCardData, aiProfilesData, accordionData, reviewData, footerData}
 export type {priceCardDataType, benefitsCardDataType, aiProfilesDataType, reviewDataType}

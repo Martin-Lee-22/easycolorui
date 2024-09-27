@@ -8,21 +8,20 @@ import Accordion from '../components/accordion'
 import Review from '../components/cards/review'
 import ContactForm from '../components/contactForm'
 import WebPage from './webpage/webPage'
+import {motion} from 'framer-motion'
+import { container } from '../data/animation'
 
 const ViewerPage = () => {
     return(
-        <main className="viewer-page">
-            {/* {priceCardData.map((data, index)=>{
-                return (<Fragment key={index}><PriceCard data={data} key={index}/></Fragment>)
-            })} */}
-            {/* <PriceCard data={priceCardData[0]}/>
+        <motion.main className="viewer-page" variants={container} initial="hidden" animate="show">
+            <PriceCard data={priceCardData[0]}/>
             <BenefitsCard data={benefitsCardData[0]}/>
             <AiProfiles data={aiProfilesData[0]}/>
-            <Accordion data={accordionData[0]}/>
             <Review data={reviewData[0]}/>
-            <ContactForm/> */}
+            <ContactForm/>
+            <Accordion data={accordionData[0]}/>
             <WebPage/>
-        </main>
+        </motion.main>
     )
 }
 

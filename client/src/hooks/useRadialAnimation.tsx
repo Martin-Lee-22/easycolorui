@@ -4,8 +4,8 @@ import { easeInSine} from "../util/animationFunctions"
 import { color } from "../types/colors"
 
 const useRadialAnimation = () => {
-    const [xCoord, setXcoord] = useState<string>('')
-    const [yCoord, setYcoord] = useState<string>('')
+    const [xCoord, setXCoord] = useState<number>(0)
+    const [yCoord, setYCoord] = useState<number>(0)
     const [radius, setRadius] = useState<number>(0)
     const [animate, setAnimate] = useState<boolean>(false)
 
@@ -33,7 +33,7 @@ const useRadialAnimation = () => {
             let newColor = colors[colors.length - 1].color
             let prevColor = 'transparent'
             if(colors.length > 1) prevColor = colors[colors.length - 2].color
-            return `radial-gradient(circle at ${xCoord} ${yCoord}, ${newColor} ${radius}%, ${prevColor} 1%)`
+            return `radial-gradient(circle at ${xCoord}% ${yCoord}%, ${newColor} ${radius}%, ${prevColor} 1%)`
         }
     }
 
@@ -41,8 +41,8 @@ const useRadialAnimation = () => {
         let [x, y] = findCursorCoordinatesViaElement(e, element)
         setAnimate(true)
         setRadius(0)
-        setXcoord(x)
-        setYcoord(y)
+        setXCoord(x)
+        setYCoord(y)
     }
 
     return {xCoord, yCoord, radius, startRadialAnimation, createRadialGradient}

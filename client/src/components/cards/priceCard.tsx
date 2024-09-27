@@ -2,11 +2,13 @@ import ColorUX from "../colorUX";
 import "../../scss/components/card.scss";
 import ColorUXFactory from "../colorUXFactory";
 import { priceCardDataType } from "../../data/components";
+import {motion} from 'framer-motion'
+import { popUpAnimation } from "../../data/animation";
 
 const PriceCard = ({data}:{data:priceCardDataType}) => {
   return (
     <ColorUX>
-      <div className={`price-card`}>
+      <motion.div className={`price-card`} variants={popUpAnimation}>
         <ColorUX>
             <div className={`price-card-${data.type}-div`}>
                 <ColorUXFactory>
@@ -35,7 +37,7 @@ const PriceCard = ({data}:{data:priceCardDataType}) => {
                 </ColorUXFactory>
             </div>
         </ColorUX>
-      </div>
+      </motion.div>
     </ColorUX>
   );
 };

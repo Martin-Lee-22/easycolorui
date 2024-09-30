@@ -1,12 +1,15 @@
-import { useContext, useState } from 'react'
+import { useContext, useRef, useState } from 'react'
 import '../../scss/components/sidebar/colorGroup.scss'
 import ColorInput from './colorInput'
 import ColorsContext from '../../context/colorsContextProvider'
 import { color } from '../../types/colors'
+import Modal from '../modal'
 
 const ColorGroup = () => {
     const {setActiveColor, colors, setColors} = useContext(ColorsContext)
     const [activeIndex, setActiveIndex] = useState<number>()
+    const modal = useRef<HTMLDialogElement | null>(null)
+    const minColorsLength = 3
 
     const handleChange = (value:string, c:color) => {
         setColors(colors.map((color)=>{
@@ -17,8 +20,10 @@ const ColorGroup = () => {
 
     return(
         <section className="color-group">
-            <div>
-                <h3>Step 1:</h3><h4>Pick Colors</h4>
+            <div className='color-group-header'>
+                <h3>Step 1: Pick Colors</h3>
+                <button title='Copy' className='export-button' onClick={()=>{modal.current?.showModal()}}><span>&#x2912;</span></button>
+                <Modal refModal={modal}/>
             </div>
             <form>
                 {colors.map((color, index)=>{
@@ -29,7 +34,7 @@ const ColorGroup = () => {
             </form>
             <div className='add-subtract-color-wrapper'>
                 <button title='Add Color' className='add-color' onClick={()=>{setColors([...colors, {color: '#FFFFFF', description: 'Extra color for your palette', type: `extra #${colors.length - 2}`, classes:[]}])}}><span>&#x2b;</span></button>
-                {colors.length > 3 && <button title='Subtract Color' className='subtract-color' onClick={()=>{setColors([...colors.slice(0, -1)])}}><span>&#x2212;</span></button>}
+                {colors.length > minColorsLength && <button title='Subtract Color' className='subtract-color' onClick={()=>{setColors([...colors.slice(0, -1)])}}><span>&#x2212;</span></button>}
             </div>
         </section>
     )

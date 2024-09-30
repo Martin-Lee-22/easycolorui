@@ -20,7 +20,6 @@ const usePalettes = () => {
 
     const createPalette = async (newPalette: palette) => {
         try{
-            console.log(`newPalette: ${newPalette}`)
             await axios.post('/palettes', newPalette)
             setPalettes([...palettes, newPalette])
         }catch(err){

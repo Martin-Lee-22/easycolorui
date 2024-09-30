@@ -11,6 +11,42 @@ $color-picker-width: 25px;
     }
 }
 
+.export-button{
+    position: relative;
+    border: 1px solid white;
+    width: 20px;
+    height: 20px;
+    opacity: 50%;
+    background: transparent;
+    float: right;
+    margin-right: 10px;
+    margin-top: 2px;
+    & span{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 1rem;
+        color: white;
+    }
+    &:hover{
+        cursor: pointer;
+        opacity: 100%;
+    }
+    &:active{
+        transform: scale(0.95);
+    }
+}
+
+.color-group-header{
+    margin-bottom: 10px;
+    padding: 5px 0 10px 0;
+    & h3{
+        margin: 0;
+        float: left;
+    }
+}
+
 .color-input-wrapper{
     display: flex;
     flex-direction: row;
@@ -63,7 +99,6 @@ $color-picker-width: 25px;
     column-gap: 30px;
     margin-top: 15px;
     & button{
-        opacity: 60%;
         border: 1px solid white;
         text-align: center;
         width: 25px;
@@ -78,7 +113,6 @@ $color-picker-width: 25px;
             color: white;
         }
         &:hover{
-            opacity: 100%;
             cursor: pointer;
         }
         &:active{

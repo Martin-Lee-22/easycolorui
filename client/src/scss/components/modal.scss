@@ -1,0 +1,59 @@
+@use '../abstracts';
+
+.color-modal{
+    background-color: #040e1d;
+    color: white;
+    width: 28vw;
+    &::backdrop{
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+}
+
+.color-modal-header{
+    display: flex;
+    position: relative;
+    margin-bottom: 20px;
+    & h3{
+        margin: 0 auto 0 auto;
+    }
+    & button{
+        position: absolute;
+        right: 0;
+        color: white;
+        background-color: red;
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}
+
+.color-modal-body{
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: abstracts.$padding-bigger;
+    & p{
+        margin: 0 0 0 20px;
+    }
+}
+
+.color-modal-copy-button{
+    margin: 20px auto 0 auto;
+    display: block;
+    width: max-content;
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    font-size: 1.1rem;
+    &:hover{
+        cursor: pointer;
+        background-color: rgb(255, 255, 255, 0.5);
+    }
+    &:active{
+        transform: scale(0.95);
+    }
+}

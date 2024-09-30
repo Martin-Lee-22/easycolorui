@@ -1,9 +1,6 @@
 import { IsArray, IsInt, IsNotEmpty, IsString, isNotEmpty } from "class-validator"
 
 export class CreateColorDto {
-    @IsInt()
-    id: number
-
     @IsString()
     color: string
 

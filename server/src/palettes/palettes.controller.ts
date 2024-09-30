@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, ValidationPipe } from '@nestjs/common';
 import { PalettesService } from './palettes.service';
 import { Prisma } from '@prisma/client';
 import { Throttle, SkipThrottle } from '@nestjs/throttler';
@@ -19,5 +19,10 @@ export class PalettesController {
     @Post()
     async createPalette(@Body(ValidationPipe) palette:Prisma.PaletteCreateInput){
         return this.palettesService.createPalettes(palette)
+    }
+
+    @Delete(':id')
+    async deletePalette(@Param('id') id: number){
+        return this.palettesService.deletePalette(+id)
     }
 }

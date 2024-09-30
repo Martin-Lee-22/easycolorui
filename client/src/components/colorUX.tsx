@@ -45,7 +45,9 @@ const ColorUX = ({children}: {children: JSX.Element}) => {
         if(element.current !== null && activeColor !== undefined) {
             setColorHistory(([...colorHistory, activeColor]))
             let newColors = removeClasses(element.current.className, colors)
-            newColors[activeColor.id].classes.push(element.current.className)
+            newColors.forEach((color)=>{
+                if(element.current !== null && color.type === activeColor.type) color.classes.push(element.current.className)
+            })
             setColors(newColors)
         }
     }

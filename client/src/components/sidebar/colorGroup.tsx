@@ -12,7 +12,7 @@ const ColorGroup = () => {
         setColors(colors.map((color)=>{
             return color.type === c.type ? {...color, color: value} : color
         }))
-        setActiveColor({id:c.id, color:value, type:c.type, description:c.description, classes:c.classes})
+        setActiveColor({color:value, type:c.type, description:c.description, classes:c.classes})
     }
 
     return(
@@ -28,7 +28,7 @@ const ColorGroup = () => {
                 })}
             </form>
             <div className='add-subtract-color-wrapper'>
-                <button title='Add Color' className='add-color' onClick={()=>{setColors([...colors, {id:colors.length, color: '#FFFFFF', description: 'Extra color for your palette', type: `extra #${colors.length - 2}`, classes:[]}])}}><span>&#x2b;</span></button>
+                <button title='Add Color' className='add-color' onClick={()=>{setColors([...colors, {color: '#FFFFFF', description: 'Extra color for your palette', type: `extra #${colors.length - 2}`, classes:[]}])}}><span>&#x2b;</span></button>
                 {colors.length > 3 && <button title='Subtract Color' className='subtract-color' onClick={()=>{setColors([...colors.slice(0, -1)])}}><span>&#x2212;</span></button>}
             </div>
         </section>

@@ -19,7 +19,6 @@
     border-radius: abstracts.$border-radius;
     &:hover{
         cursor: pointer;
-        transform: scale(1.03);
         border: 1px solid white;
     }
     &:active{

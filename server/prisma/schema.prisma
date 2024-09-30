@@ -21,7 +21,7 @@ model Palette {
 }
 
 model Colors{
-  id Int @unique
+  id Int @unique @id @default(autoincrement())
   color String
   description String 
   type String

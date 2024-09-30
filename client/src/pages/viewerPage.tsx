@@ -11,6 +11,7 @@ import WebPage from './webpage/webPage'
 import {motion} from 'framer-motion'
 import { container } from '../data/animation'
 
+
 const ViewerPage = () => {
     return(
         <motion.main className="viewer-page" variants={container} initial="hidden" animate="show">

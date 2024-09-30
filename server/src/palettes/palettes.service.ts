@@ -9,35 +9,6 @@ import { DatabaseService } from 'src/database/database.service';
 export class PalettesService {
     constructor(private readonly databaseService: DatabaseService){}
 
-    private readonly palettes = [
-        {
-            id: 1,
-            colors: [
-                {
-                    id: 1,
-                    color: 'primary',
-                    description: 'primary example',
-                    type: 'primary',
-                    classes: ['class 1', 'class 2']
-                },
-                {
-                    id: 2,
-                    color: 'secondary',
-                    description: 'secondary example',
-                    type: 'secondary',
-                    classes: ['class 3', 'class 4']
-                },
-                {
-                    id: 3,
-                    color: 'tertiary',
-                    description: 'tertiary example',
-                    type: 'tertiary ',
-                    classes: ['class 5', 'class 6']
-                }
-            ]
-        }
-    ]
-
     async getPalettes(){
         return this.databaseService.palette.findMany({
             include: {
@@ -59,6 +30,7 @@ export class PalettesService {
         //     ...palette
         // }
         // this.palettes.push(newPalette)
+        console.log(palette)
         const newPalette = {
             colors:{
                 create: palette.colors as Prisma.ColorsCreateWithoutPaletteInput[]
@@ -66,6 +38,14 @@ export class PalettesService {
         }
         return this.databaseService.palette.create({
             data: newPalette
+        })
+    }
+
+    async deletePalette(id: number){
+        return this.databaseService.palette.delete({
+            where: {
+                id: id
+            }
         })
     }
 }

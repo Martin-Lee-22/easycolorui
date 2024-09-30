@@ -9,4 +9,14 @@ function findCursorCoordinatesViaElement(e:React.MouseEvent<HTMLElement, MouseEv
     return [0, 0]
 }
 
-export {findCursorCoordinatesViaElement}
+function colorElementsViaClasses(classNames:string[], color:string) {
+    classNames.forEach((className) => {
+        let elements = document.getElementsByClassName(className)
+        for(let i = 0; i < elements.length; i++){
+            let element = elements[i] as HTMLElement
+            element.style.backgroundColor = color
+        }
+    });
+}
+
+export {findCursorCoordinatesViaElement, colorElementsViaClasses}

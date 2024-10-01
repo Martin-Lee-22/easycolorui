@@ -1,3 +1,5 @@
+import { color } from "../types/colors"
+
 /**
  * Given a React.MouseEvent and a React.RefObject pointing to an HTML element, this function will calculate the percentage of
  * the element's width and height that the mouse cursor is at when the event is triggered. The returned values are based on the top
@@ -28,9 +30,43 @@ function colorElementsViaClasses(classNames:string[], color:string) {
         let elements = document.getElementsByClassName(className)
         for(let i = 0; i < elements.length; i++){
             let element = elements[i] as HTMLElement
+            if(className === "benefits-card") console.log(color)
             element.style.backgroundColor = color
+            element.style.backgroundImage = "none"
         }
     });
 }
 
-export {findCursorCoordinatesViaElement, colorElementsViaClasses}
+/**
+ * Searches the given array of color objects for one with the given color, and returns it if found.
+ * @param colors An array of color objects to search.
+ * @param color The color to search for.
+ * @returns The color object with the given color, or undefined if not found.
+ */
+function getColorObjectViaColor(colors: color[], color: string):color | undefined {
+    let hexColor = rgbToHex(color)
+    for(let colorObject of colors){
+        if(colorObject.color === hexColor) {
+            return colorObject
+        }
+    }
+}
+
+
+/**
+ * Converts an rgb color string to a hex color string.
+ * @param rgb The rgb color string to convert.
+ * @returns The hex color string equivalent of the given rgb color string.
+ */
+function rgbToHex(rgb: string): string{
+    let rgbValues = rgb.split(',')
+    let r = parseInt(rgbValues[0].trim().split('(')[1], 10).toString(16)
+    let g = parseInt(rgbValues[1].trim(), 10).toString(16)
+    let b = parseInt(rgbValues[2].trim().split(')')[0], 10).toString(16)
+    r = r.length === 1 ? '0' + r : r
+    g = g.length === 1 ? '0' + g : g
+    b = b.length === 1 ? '0' + b : b
+    return `#${r}${g}${b}`
+}
+
+export {findCursorCoordinatesViaElement, colorElementsViaClasses, getColorObjectViaColor}

@@ -2,7 +2,9 @@
 
 .sidebar {
   position: default;
-  max-width: 275px;
+  width: 300px;
+  overflow-y: scroll;
+  overflow-x: hidden;
   height: 100%;
   background-color: #040e1d;
   color: white;
@@ -24,6 +26,9 @@
   }
   & section{
     padding: abstracts.$padding-big;
+  }
+  &::-webkit-scrollbar {
+    display: none;
   }
 }
 

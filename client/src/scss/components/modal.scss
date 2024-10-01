@@ -20,7 +20,8 @@
         position: absolute;
         right: 0;
         color: white;
-        background-color: red;
+        background: transparent;
+        border: 1px solid white;
         width: 28px;
         height: 28px;
         display: flex;
@@ -28,6 +29,7 @@
         justify-content: center;
         &:hover{
             cursor: pointer;
+            background-color: rgb(255, 255, 255, 0.25);
         }
     }
 }

@@ -1,21 +1,23 @@
-import { useContext, useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import '../../scss/components/sidebar/colorGroup.scss'
 import ColorInput from './colorInput'
 import ColorsContext from '../../context/colorsContextProvider'
 import { color } from '../../types/colors'
 import Modal from '../modal'
+import { useInView } from 'framer-motion'
 
 const ColorGroup = () => {
-    const {setActiveColor, colors, setColors} = useContext(ColorsContext)
+    const {activeColor, colors, setColors} = useContext(ColorsContext)
     const [activeIndex, setActiveIndex] = useState<number>()
     const modal = useRef<HTMLDialogElement | null>(null)
+    const isInView = useInView(modal)
     const minColorsLength = 3
 
     const handleChange = (value:string, c:color) => {
         setColors(colors.map((color)=>{
             return color.type === c.type ? {...color, color: value} : color
         }))
-        setActiveColor({color:value, type:c.type, description:c.description, classes:c.classes})
+        activeColor.current = {color:value, type:c.type, description:c.description, classes:c.classes} 
     }
 
     return(
@@ -23,11 +25,11 @@ const ColorGroup = () => {
             <div className='color-group-header'>
                 <h3>Step 1: Pick Colors</h3>
                 <button title='Copy' className='export-button' onClick={()=>{modal.current?.showModal()}}><span>&#x2912;</span></button>
-                <Modal refModal={modal}/>
+                <Modal refModal={modal} isInView={isInView}/>
             </div>
             <form>
                 {colors.map((color, index)=>{
-                    return (<div key={index} className={'color-input-wrapper ' + (activeIndex === index && 'active-color')} onClick={()=>{setActiveColor(color); setActiveIndex(index)}}>
+                    return (<div key={index} className={'color-input-wrapper ' + (activeIndex === index && 'active-color')} onClick={()=>{activeColor.current = color; setActiveIndex(index)}}>
                                 <ColorInput handleChange={handleChange} color={color} setActiveIndex={()=>setActiveIndex(index)}/>
                             </div>)
                 })}

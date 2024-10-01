@@ -27,7 +27,7 @@ const usePalettes = () => {
             console.log(`Error: ${err}`)
         }
     }
-    return {palettes, setPalettes, createPalette}
+    return {palettes, createPalette}
 }
 
 export default usePalettes

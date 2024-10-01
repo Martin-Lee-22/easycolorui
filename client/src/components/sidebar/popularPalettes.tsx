@@ -4,11 +4,18 @@ import usePalettes from '../../hooks/usePalettes'
 import '../../scss/components/sidebar/popularPalettes.scss'
 import { color } from "../../types/colors"
 import { colorElementsViaClasses } from "../../util/helperFunctions"
+import Loader from "../loader"
 
 const PopularPalettes = () => {
-    const {colors, setColors} = useContext(ColorsContext)
-    const {palettes, createPalette} = usePalettes()
-
+    const {setColors} = useContext(ColorsContext)
+    const {palettes} = usePalettes()
+    
+    /**
+     * Creates a CSS gradient string given an array of colors and a direction.
+     * @param colors An array of color objects.
+     * @param direction The direction of the gradient as a string. e.g. 'to right' or '45deg'.
+     * @returns A CSS gradient string.
+     */
     function createGradient(colors: color[], direction: string){
         let percentage = (1 / colors.length) * 100
         let style = `linear-gradient(to ${direction},`
@@ -22,19 +29,19 @@ const PopularPalettes = () => {
         return style
     }
 
-    function handleClick(colors:color[]) {
-        setColors(colors)
-        for(let color of colors){
-            colorElementsViaClasses(color.classes, color.color)
+    function handleClick(paletteColors:color[]) {
+        for(let paletteColor of paletteColors){
+            colorElementsViaClasses(paletteColor.classes, paletteColor.color)
         }   
+        setColors(paletteColors)
     }
 
     return(
         <section>
             <h3>Popular Palettes:</h3>
-            <button onClick={()=>createPalette({colors})}>Import</button>
             <div className="popular-palettes-wrapper">
-                {palettes.map((palette, index) => {
+                {palettes.length === 0 ? <Loader/> :
+                palettes.map((palette, index) => {
                     return <div key={index} className="popular-palette" onClick={()=>{handleClick(palette.colors)}} style={{backgroundImage: createGradient(palette.colors, 'right')}}/>
                 })}
             </div>

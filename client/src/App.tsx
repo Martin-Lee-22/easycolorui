@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Sidebar from './components/sidebar/sideBar'
 import Layout from './layout/layout'
 import ViewerPage from './pages/viewerPage'
@@ -12,7 +12,7 @@ import { runDriver } from './util/driver'
 
 function App() {
   const [colors, setColors] = useState<color[]>(defaultColors)
-  const [activeColor, setActiveColor] = useState<color | undefined>()
+  const activeColor = useRef<color | undefined>()
   const isMobile = useMediaQuery({ query: '(max-width: 700px)' })
   const [showSideBar, setShowSideBar] = useState<boolean>(true)
 
@@ -25,7 +25,7 @@ function App() {
 
   return (
     <Layout>
-      <ColorsContext.Provider value={{colors, setColors, activeColor, setActiveColor}}>
+      <ColorsContext.Provider value={{colors, setColors, activeColor}}>
         <ViewerPage/>
         <Sidebar showSideBar={showSideBar} setShowSideBar={setShowSideBar} isMobile={isMobile}/>
         <img src='/hamburger.png' alt='hamburger' className={'hamburger ' + (!isMobile && 'hide')} onClick={() => setShowSideBar(!showSideBar)}/>

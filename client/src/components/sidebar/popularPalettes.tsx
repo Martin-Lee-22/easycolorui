@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import ColorsContext from "../../context/colorsContextProvider"
 import usePalettes from '../../hooks/usePalettes'
 import '../../scss/components/sidebar/popularPalettes.scss'
@@ -8,6 +8,7 @@ import Loader from "../loader"
 
 const PopularPalettes = () => {
     const {setColors} = useContext(ColorsContext)
+    const [activeIndex, setActiveIndex] = useState<number>()
     const {palettes} = usePalettes()
     
     /**
@@ -29,11 +30,12 @@ const PopularPalettes = () => {
         return style
     }
 
-    function handleClick(paletteColors:color[]) {
+    function handleClick(paletteColors:color[], index: number){
         for(let paletteColor of paletteColors){
             colorElementsViaClasses(paletteColor.classes, paletteColor.color)
         }   
         setColors(paletteColors)
+        setActiveIndex(index)
     }
 
     return(
@@ -42,7 +44,7 @@ const PopularPalettes = () => {
             <div className="popular-palettes-wrapper">
                 {palettes.length === 0 ? <Loader/> :
                 palettes.map((palette, index) => {
-                    return <div key={index} className="popular-palette" onClick={()=>{handleClick(palette.colors)}} style={{backgroundImage: createGradient(palette.colors, 'right')}}/>
+                    return <div key={index} className={'popular-palette ' + (activeIndex === index && 'active')} onClick={()=>{handleClick(palette.colors, index)}} style={{backgroundImage: createGradient(palette.colors, 'right')}}/>
                 })}
             </div>
         </section>

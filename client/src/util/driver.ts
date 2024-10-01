@@ -8,7 +8,9 @@ const driverObj = driver({
     steps:[
         { element: '.color-group', popover: { title: 'Step 1: Create & Select a Color', description: 'Create and select your own colors from this palette!'} },
         { element: '.viewer-page', popover: { title: 'Last Step: Click on an Element!', description: 'After selecting a color, click on an element to see what it looks like!', side: "left", align: 'center'} }
-    ]
+    ],
+    disableActiveInteraction: true,
+    stagePadding: 0
 });
 function runDriver(){
     if(!checkCookie('completedTour')){

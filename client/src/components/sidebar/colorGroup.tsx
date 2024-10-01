@@ -1,10 +1,11 @@
-import { useContext, useEffect, useRef, useState } from 'react'
+import { useContext, useRef, useState } from 'react'
 import '../../scss/components/sidebar/colorGroup.scss'
 import ColorInput from './colorInput'
 import ColorsContext from '../../context/colorsContextProvider'
 import { color } from '../../types/colors'
 import Modal from '../modal'
-import { useInView } from 'framer-motion'
+import { useInView, motion } from 'framer-motion'
+import { container, popUpAnimation } from '../../data/animation'
 
 const ColorGroup = () => {
     const {activeColor, colors, setColors} = useContext(ColorsContext)
@@ -27,13 +28,13 @@ const ColorGroup = () => {
                 <button title='Copy' className='export-button' onClick={()=>{modal.current?.showModal()}}><span>&#x2912;</span></button>
                 <Modal refModal={modal} isInView={isInView}/>
             </div>
-            <form>
+            <motion.form variants={container} initial="hidden" animate="show">
                 {colors.map((color, index)=>{
-                    return (<div key={index} className={'color-input-wrapper ' + (activeIndex === index && 'active-color')} onClick={()=>{activeColor.current = color; setActiveIndex(index)}}>
+                    return (<motion.div key={index} className={'color-input-wrapper ' + (activeIndex === index && 'active-color')} onClick={()=>{activeColor.current = color; setActiveIndex(index)}} variants={popUpAnimation}>
                                 <ColorInput handleChange={handleChange} color={color} setActiveIndex={()=>setActiveIndex(index)}/>
-                            </div>)
+                            </motion.div>)
                 })}
-            </form>
+            </motion.form>
             <div className='add-subtract-color-wrapper'>
                 <button title='Add Color' className='add-color' onClick={()=>{setColors([...colors, {color: '#FFFFFF', description: 'Extra color for your palette', type: `extra #${colors.length - 2}`, classes:[]}])}}><span>&#x2b;</span></button>
                 {colors.length > minColorsLength && <button title='Subtract Color' className='subtract-color' onClick={()=>{setColors([...colors.slice(0, -1)])}}><span>&#x2212;</span></button>}

@@ -5,6 +5,8 @@ import '../../scss/components/sidebar/popularPalettes.scss'
 import { color } from "../../types/colors"
 import { colorElementsViaClasses } from "../../util/helperFunctions"
 import Loader from "../loader"
+import { motion } from "framer-motion"
+import { container, popUpAnimation } from "../../data/animation"
 
 const PopularPalettes = () => {
     const {setColors} = useContext(ColorsContext)
@@ -41,11 +43,14 @@ const PopularPalettes = () => {
     return(
         <section>
             <h3>Popular Palettes:</h3>
-            <div className="popular-palettes-wrapper">
+            <div className="popular-palettes-container">
                 {palettes.length === 0 ? <Loader/> :
-                palettes.map((palette, index) => {
-                    return <div key={index} className={'popular-palette ' + (activeIndex === index && 'active')} onClick={()=>{handleClick(palette.colors, index)}} style={{backgroundImage: createGradient(palette.colors, 'right')}}/>
+                <motion.div className="popular-palettes-wrapper" variants={container} initial="hidden" animate="show">
+                    {palettes.map((palette, index) => {
+                    return <motion.div key={index} className={'popular-palette ' + (activeIndex === index && 'active')} onClick={()=>{handleClick(palette.colors, index)}} style={{backgroundImage: createGradient(palette.colors, 'right')}} variants={popUpAnimation}/>
                 })}
+                </motion.div>
+                }
             </div>
         </section>
     )

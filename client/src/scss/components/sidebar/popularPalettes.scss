@@ -1,14 +1,22 @@
 @use '../../abstracts';
 
-.popular-palettes-wrapper{
+.popular-palettes-container{
     display: flex;
     flex-direction: column;
     align-items: center;
-    row-gap: 15px;
     background-color: abstracts.$background-color-div;
     border-radius: abstracts.$border-radius;
     padding: abstracts.$padding-big;
     height: 100%;
+}
+
+.popular-palettes-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 10px;
+    width: 100%;
 }
 
 .popular-palette{

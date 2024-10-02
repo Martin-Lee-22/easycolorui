@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import { findCursorCoordinatesViaElement } from "../util/helperFunctions"
-import { easeInSine} from "../util/animationFunctions"
+import { easeInOutQuad} from "../util/animationFunctions"
 import { color } from "../types/colors"
 
 const useRadialAnimation = () => {
@@ -8,21 +8,26 @@ const useRadialAnimation = () => {
     const [yCoord, setYCoord] = useState<number>(0)
     const [radius, setRadius] = useState<number>(0)
     const [animate, setAnimate] = useState<boolean>(false)
-
     const progress = useRef(0)
-    const delay = 1
+
     const maxRadiusSize = 100
+    var time = 0
+    const diff = 30
+    const minTime = 0
+    const maxTime = 1000
 
     useEffect(()=>{
-        if(animate && radius < maxRadiusSize){
-            var timeoutId = setTimeout(()=>{
-                progress.current += 0.020
-                let easeValue = easeInSine(progress.current) * 100
-                setRadius(easeValue)
-            }, delay)
-
+        if(animate === true && radius < maxRadiusSize){
+            for (var i = 0, len = diff; i <= len; i++) {
+                var timeoutId = setTimeout(()=>{
+                progress.current += 0.05
+                setRadius(progress.current)
+                }, time)
+                time = easeInOutQuad(i, minTime, maxTime, diff);
+            }
         } else {
             progress.current = 0
+            setRadius(100)
             setAnimate(false)
         }
         return () => clearTimeout(timeoutId)

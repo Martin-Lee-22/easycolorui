@@ -6,6 +6,7 @@ import {motion} from 'framer-motion'
 import { popUpAnimation } from "../../data/animation";
 
 const PriceCard = ({data}:{data:priceCardDataType}) => {
+  console.trace()
   return (
     <ColorUX>
       <motion.div className={`price-card`} variants={popUpAnimation}>
